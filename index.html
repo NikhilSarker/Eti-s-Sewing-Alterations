@@ -1,0 +1,2233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eti's Sewing & Alterations</title>
+    <link rel="icon" type="image/png" href="./Images/fabicon.png">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Dancing+Script:wght@600;700&family=Inter:wght@400;500;600&family=Hind+Siliguri:wght@400;500;600;700&display=swap");
+
+      :root {
+        --cream: #f5eee3;
+        --cream-soft: #efe6d8;
+        --maroon: #5c1f2e;
+        --maroon-dark: #4a1824;
+        --gold: #b8873a;
+        --ink: #2e2622;
+        --ink-soft: #6b5d52;
+        --line: #dccfbb;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      ul{
+        list-style: none;
+      }
+      body {
+        background: var(--cream);
+        color: var(--ink);
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+      }
+      /* Bengali script renders better in Hind Siliguri; applied automatically once lang=bn is toggled */
+      body.lang-bn {
+        font-family: "Hind Siliguri", "Inter", sans-serif;
+      }
+      body.lang-bn h1,
+      body.lang-bn h2,
+      body.lang-bn h3,
+      body.lang-bn .script {
+        font-family: "Hind Siliguri", "Playfair Display", serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      .script {
+        font-family: "Playfair Display", serif;
+        color: var(--ink);
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      .eyebrow {
+        font-size: 0.78rem;
+        letter-spacing: 1.5px;
+        color: var(--maroon);
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      /* ---------- Header ---------- */
+      header {
+        background: var(--cream);
+        border-bottom: 1px solid var(--line);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+        gap: 16px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .brand-text .script {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.9rem;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--ink);
+      }
+      .brand-text .sub {
+        font-size: 0.72rem;
+        letter-spacing: 2px;
+        color: var(--ink-soft);
+        margin-top: 2px;
+      }
+      nav.links {
+        display: flex;
+        gap: 34px;
+        font-size: 0.95rem;
+      }
+      nav.links a {
+        position: relative;
+        padding-bottom: 4px;
+      }
+      nav.links a.active {
+        color: var(--maroon);
+        font-weight: bold;
+      }
+      nav.links a.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--maroon);
+        
+      }
+
+
+      nav.links a:hover {
+        color: var(--maroon);
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      /* .btn-book {
+        background: var(--maroon);
+        color: var(--cream);
+        padding: 11px 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+      .btn-book:hover {
+        background: var(--maroon-dark);
+      } */
+
+      .btn-whatsapp {
+        background: var(--maroon);
+        color: var(--cream);
+        padding: 11px 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+      .btn-whatsapp:hover {
+        background: var(--maroon-dark);
+      }
+
+      /* .phone {
+        text-align: right;
+        font-size: 0.85rem;
+        color: var(--ink-soft);
+        white-space: nowrap;
+      }
+      .phone .num {
+        font-weight: 600;
+        color: var(--ink);
+        font-size: 0.95rem;
+      } */
+
+      /* ---------- Language toggle ---------- */
+      .lang-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--ink-soft);
+        white-space: nowrap;
+      }
+      .lang-toggle .lang-label {
+        transition:
+          color 0.2s,
+          font-weight 0.2s;
+        cursor: pointer;
+      }
+      .lang-toggle .lang-label.active {
+        color: var(--maroon);
+      }
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 38px;
+        height: 21px;
+        flex-shrink: 0;
+      }
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--line);
+        transition: 0.25s;
+        border-radius: 22px;
+      }
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 15px;
+        width: 15px;
+        left: 3px;
+        bottom: 3px;
+        background: #fff;
+        transition: 0.25s;
+        border-radius: 50%;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      }
+      .switch input:checked + .slider {
+        background: var(--maroon);
+      }
+      .switch input:checked + .slider:before {
+        transform: translateX(17px);
+      }
+      .switch input:focus-visible + .slider {
+        outline: 2px solid var(--gold);
+        outline-offset: 2px;
+      }
+
+      /* ---------- Hamburger ---------- */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 28px;
+        height: 28px;
+        background: none;
+        border: 0;
+        cursor: pointer;
+        padding: 0;
+      }
+      .hamburger span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: var(--ink);
+        border-radius: 2px;
+        transition:
+          transform 0.25s ease,
+          opacity 0.25s ease;
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .menu-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(20, 14, 10, 0.4);
+        z-index: 90;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .menu-overlay.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: min(78vw, 300px);
+        height: 100vh;
+        background: var(--cream);
+        z-index: 95;
+        box-shadow: -8px 0 24px rgba(0, 0, 0, 0.18);
+        padding: 28px 28px 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+        transition: right 0.3s ease;
+        overflow-y: auto;
+      }
+      .mobile-menu.open {
+        right: 0;
+      }
+      .mobile-menu-top {
+        display: flex;
+        justify-content: flex-end;
+      }
+      .mobile-menu-close {
+        background: none;
+        border: 0;
+        cursor: pointer;
+        font-size: 1.4rem;
+        color: var(--ink-soft);
+        line-height: 1;
+        padding: 4px;
+      }
+      .mobile-menu nav {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        font-size: 1.05rem;
+      }
+      .mobile-menu nav a.active {
+        color: var(--maroon);
+        font-weight: bold;
+      }
+
+      .mobile-menu .btn-book {
+        justify-content: center;
+      }
+      .mobile-menu .phone {
+        text-align: left;
+      }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        padding: 50px 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        /* background:var(--cream-soft); */
+        
+        /* background-image: url("./images/Hero image.png"); */
+       background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./images/Hero image.png");
+        background-position: center;
+      }
+      .hero-copy {
+        padding: 80px 48px 80px 32px;
+        max-width: 560px;
+        margin-left: auto;
+        color: white;
+      }
+      .hero h1 {
+        font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+        margin: 14px 0 22px;
+        line-height: 1.12;
+         color: white;
+      }
+      .hero p {
+        /* color: var(--ink-soft); */
+        color: white;
+        font-size: 1.25rem;
+        max-width: 46ch;
+      }
+      .hero-actions {
+        margin-top: 30px;
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .btn-primary,
+      .btn-outline {
+        padding: 14px 24px;
+        font-size: 0.92rem;
+        font-weight: 500;
+        border-radius: 3px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btn-primary {
+        background: var(--maroon);
+        color: var(--cream);
+      }
+      .btn-primary:hover {
+        background: var(--maroon-dark);
+      }
+      .btn-outline {
+        border: 1.5px solid var(--ink);
+        color: var(--ink);
+      }
+      .btn-outline:hover {
+        background: var(--ink);
+        color: var(--cream);
+      }
+
+      .hero-visual {
+        position: relative;
+        overflow: hidden;
+        min-height: 420px;
+      }
+      .hero-visual svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* ---------- Section heading ---------- */
+      .section-title {
+        text-align: center;
+        margin-bottom: 52px;
+      }
+      .section-title .rule {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin-bottom: 12px;
+      }
+      .section-title .rule span {
+        width: 44px;
+        height: 1px;
+        background: var(--line);
+      }
+      .section-title h2 {
+        font-size: clamp(1.9rem, 3vw, 2.4rem);
+      
+      }
+      .section-title p {
+        color: var(--ink-soft);
+        font-size: 0.82rem;
+        letter-spacing: 1px;
+        margin-top: 8px;
+      }
+
+      /* ---------- Services ---------- */
+      .services {
+        padding: 100px 0;
+      }
+      .service-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 2px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .service-card {
+        background: var(--cream);
+        padding: 34px 20px;
+        text-align: center;
+        border: 1px solid transparent;
+      }
+      .service-card:hover{
+        border: 1px solid transparent;
+        cursor: pointer;
+        color: var(--cream);
+        background:  var(--cream-soft);     
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      }
+     
+      .service-card .icon {
+        width: 44px;
+        height: 44px;
+        margin: 0 auto 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .service-card .icon svg {
+        width: 100%;
+        height: 100%;
+        stroke: var(--maroon);
+        transform: rotate(0deg);
+        transition: transform 0.3s ease;
+      }
+     
+
+      .service-card:hover .icon svg {
+        transform: rotate(30deg);
+        transition: transform 0.3s ease;
+      }
+       /* .service-card .icon svg{
+        padding:0px 25px;
+        font-size: 50px;
+        color: #00bc9c;
+      } */
+        /* .service-card .icon svg:hover {
+        width: 100%;
+        height: 100%;
+        stroke: var(--maroon);
+        transform: rotate(360deg);
+      } */
+
+      .service-card h3 {
+        font-size: 1.02rem;
+        font-weight: 600;
+        margin-bottom: 6px;
+        line-height: 1.3;
+      }
+      .service-card p {
+        font-size: 0.82rem;
+        color: var(--ink-soft);
+      }
+
+      /* ---------- Marquee strip ---------- */
+      .strip {
+        background: var(--maroon-dark);
+        color: var(--cream);
+        padding: 14px 0;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .strip-inner {
+        display: inline-block;
+        animation: scroll 26s linear infinite;
+        font-family: "Fraunces", "Playfair Display", serif;
+        font-size: 1.1rem;
+        color: var(--gold);
+      }
+      .strip-inner span {
+        margin: 0 28px;
+        color: var(--gold);
+      }
+      @keyframes scroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .strip-inner {
+          animation: none;
+        }
+      }
+      /* ---------- Marquee strip ---------- */
+
+      /* ---------- About ---------- */
+      .about {
+        padding: 120px 0;
+        background: var(--cream-soft);
+      }
+
+      .about-title h3{
+        font-size: 2.4rem;
+        font-weight: 600;
+        padding-bottom: 50px;
+        text-align: center;
+        font-family: "Playfair Display", serif;
+        color: var(--ink);
+     
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 0.85fr 1fr 0.9fr;
+        gap: 40px;
+        align-items: start;
+      }
+      .about-visual {
+        aspect-ratio: 3/4;
+        border-radius: 2px;
+        overflow: hidden;
+      }
+
+      .about-copy h2 {
+        font-size: 1.3rem;
+        /* max-width: 16ch; */
+        margin-bottom: 30px;
+        margin-top: 10px;
+        text-align: center;
+        
+      }
+      .about-copy p {
+        color: var(--ink-soft);
+        font-size: 0.96rem;
+        margin-bottom: 14px;
+      }
+      .check-list {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .check-list div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.95rem;
+      }
+      .check-list svg {
+        width: 16px;
+        height: 16px;
+        stroke: var(--maroon);
+        flex-shrink: 0;
+      }
+
+      .why-box {
+        background: var(--cream);
+        padding: 10px 30px;
+        border-radius: 2px;
+      }
+      .why-box h3 {
+        font-size: 1.3rem;
+        margin-bottom: 24px;
+      }
+      .why-item {
+        display: flex;
+        gap: 14px;
+        margin-bottom: 15px;
+      }
+      .why-item:last-child {
+        margin-bottom: 0;
+      }
+      .why-item .ic {
+        width: 26px;
+        height: 26px;
+        flex-shrink: 0;
+      }
+      .why-item .ic svg {
+        width: 100%;
+        height: 100%;
+        stroke: var(--gold);
+        fill: none;
+      }
+      .why-item h4 {
+        font-size: 0.98rem;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .why-item p {
+        font-size: 0.85rem;
+        color: var(--ink-soft);
+      }
+
+      /* ---------- Gallery ---------- */
+      .gallery {
+        padding: 120px 0;
+      }
+      /* .gallery-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+        gap: 16px;
+      } */
+      .gallery-head h2 {
+        font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+        text-align: center;
+        padding-bottom: 50px;
+      }
+      .gallery-head .eyebrow {
+        margin-bottom: 4px;
+      }
+      .gallery-head .more {
+        font-size: 0.88rem;
+        color: var(--maroon);
+        font-weight: 500;
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+      }
+      .gallery-item {
+        text-align: center;
+      }
+      .gallery-item .frame {
+        aspect-ratio: 4/3;
+        border-radius: 2px;
+        overflow: hidden; 
+        margin-top: 40px;
+        margin-bottom: 15px;
+        border: 2px solid var(--line);
+      }
+      .gallery-item span {
+        font-size: 0.82rem;
+        color: var(--ink-soft);
+        font-weight: bold;
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        padding: 10px 8px;
+      }
+        /* Gallery more btn */
+      /* .gallery-more{
+        text-align: center;
+        margin-top: 32px;
+      } */
+
+      /* ---------- Testimonials ---------- */
+      .testimonials {
+        padding: 120px 0;
+        background: var(--cream-soft);
+      }
+      .t-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .t-card {
+        background: var(--cream);
+        padding: 30px 26px;
+        border-radius: 2px;
+      }
+      .stars {
+        display: flex;
+        gap: 3px;
+        margin-bottom: 16px;
+      }
+      .stars svg {
+        width: 16px;
+        height: 16px;
+        fill: var(--gold);
+      }
+      .t-card p {
+        font-size: 0.94rem;
+        color: var(--ink-soft);
+        font-style: italic;
+        margin-bottom: 18px;
+      }
+      .t-card .who {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      /* ---------- Booking ---------- */
+      .booking {
+        display: grid;
+        grid-template-columns: 0.55fr 1.45fr;
+        background: var(--maroon);
+      }
+      .booking-visual {
+        position: relative;
+        overflow: hidden;
+      }
+      .booking-visual svg {
+        width: 100%;
+        height: 100%;
+      }
+      .booking-body {
+        padding: 50px 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        color: var(--cream);
+      }
+      .contact-info{
+        text-align: center;
+
+      }
+      .booking-body h2 {
+        color: var(--cream);
+        font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+        /* max-width: 14ch; */
+        margin-bottom: 12px;
+        /* text-align: center; */
+      }
+      /* .booking-body > div:first-child > p {
+        color: #d9c4c9;
+        font-size: 0.92rem;
+        max-width: 32ch;
+        margin-bottom: 26px;
+      } */
+      .b-contact div {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 10px;
+        font-size: 0.88rem;
+        margin-bottom: 14px;
+        color: #ebdee1;
+   
+      }
+      .b-contact svg {
+        width: 16px;
+        height: 16px;
+        stroke: var(--gold);
+        flex-shrink: 0;
+      }
+
+      .booking-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .booking-form .full {
+        grid-column: 1 / -1;
+      }
+      .booking-form label {
+        font-size: 0.76rem;
+        color: #ebdee1;
+        display: block;
+        margin-bottom: 6px;
+      }
+      .booking-form input,
+      .booking-form textarea {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: var(--cream);
+        padding: 11px 12px;
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        border-radius: 2px;
+      }
+      .booking-form input::placeholder,
+      .booking-form textarea::placeholder {
+        color: #c7abb1;
+      }
+      .booking-form input:focus,
+      .booking-form textarea:focus {
+        outline: none;
+        border-color: var(--gold);
+      }
+      .booking-form button {
+        grid-column: 1 / -1;
+        justify-self: start;
+        background: var(--gold);
+        color: var(--maroon-dark);
+        border: 0;
+        padding: 13px 30px;
+        font-size: 0.92rem;
+        font-weight: 600;
+        border-radius: 2px;
+        cursor: pointer;
+        margin-top: 4px;
+      }
+      .booking-form button:hover {
+        background: #c9954a;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 2px;
+      }
+      /* Follow Us */
+      .contact-icon{
+        padding-bottom: 50px;
+      }
+      .contact-icon h2{
+        text-align: center;
+      }
+      .contact-icon ul{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        padding-top: 15px;
+        
+      }
+      .contact-icon ul li{
+      position: relative;
+      margin-right: 40px;
+      }
+     
+      .contact-icon ul li i{
+        position: absolute;
+        content: '';
+        bottom: 0%;
+        left: 0%;
+        width: 75px;
+        height: 75px;
+        /* background-color:transparent; */
+        /* border: 1px solid var(--gold); */
+        border-radius: 50%;
+        /* color: red; */
+        transform:translate(0%, 100%);
+        -webkit-transform:translate(0%, 100%);
+        -moz-transform:translate(0%, 100%);
+        -ms-transform:translate(0%, 100%);
+        -o-transform:translate(0%, 100%);
+        text-align: center;
+        line-height: 75px;
+        font-size: 30px;
+      }
+     
+      .fb-color{
+        background-color:#3b5998;
+        color: white;
+        border: 3px solid #3b5998;
+        transition: filter 0.3s ease, transform 0.3s ease;
+      }
+      .fb-color:hover{
+        background-color:#3b5998;
+        color: white;
+        border: 3px solid #3b5998;
+        filter: drop-shadow(0 0 6px #1877F2);
+      }
+      .ins-color{
+          background: linear-gradient(
+            45deg,
+            #feda75,
+            #fa7e1e,
+            #d62976,
+            #962fbf,
+            #4f5bd5
+          );
+        color: white;
+        border: 3px solid linear-gradient(
+            45deg,
+            #feda75,
+            #fa7e1e,
+            #d62976,
+            #962fbf,
+            #4f5bd5
+          );
+          transition: filter 0.3s ease, transform 0.3s ease;
+      }
+      .ins-color:hover{
+        border:  3px solid linear-gradient(
+            45deg,
+            #feda75,
+            #fa7e1e,
+            #d62976,
+            #962fbf,
+            #4f5bd5
+          );;
+        background: linear-gradient(
+            45deg,
+            #feda75,
+            #fa7e1e,
+            #d62976,
+            #962fbf,
+            #4f5bd5
+          );
+        color: white;       
+        filter: drop-shadow(0 0 6px #E4405F);
+      }
+      .yt-color{
+        background:white;
+        color: red;
+        border: 3px solid white;
+        transition: filter 0.3s ease, transform 0.3s ease;
+      }
+      .yt-color:hover{
+        border: 3px solid transparent;
+        background: white;
+        color: red;
+        filter: drop-shadow(0 0 6px #FF0000);
+      }
+    
+
+      /* ---------- Footer ---------- */
+      /* footer{ background:var(--maroon-dark); color:#D9C4C9; padding:40px 0; } */
+      footer {
+        background: var(--cream-soft);
+        padding: 10px 0;
+      }
+      .footer-grid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .footer-brand .script {
+        font-family: "Dancing Script", cursive;
+        color: var(--cream);
+        font-size: 1.5rem;
+      }
+      .footer-links {
+        display: flex;
+        gap: 26px;
+        font-size: 0.85rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .footer-links a:hover {
+        color: var(--cream);
+      }
+      .footer-social {
+        display: flex;
+        gap: 12px;
+      }
+      .footer-social a {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .footer-social svg {
+        width: 15px;
+        height: 15px;
+        stroke: var(--cream);
+      }
+      .footer-fine {
+        text-align: center;
+        font-size: 0.78rem;
+        color: #b78e97;
+      }
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 980px) {
+        nav.links {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        .hero-copy {
+          margin-left: 0;
+          padding: 56px 32px;
+          max-width: none;
+        }
+        .hero-visual {
+          min-height: 300px;
+          order: -1;
+        }
+        .service-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .gallery-grid {
+          grid-template-columns: repeat(1, 1fr);
+        }
+        .t-grid {
+          grid-template-columns: 1fr;
+        }
+        .booking {
+          grid-template-columns: 1fr;
+        }
+        /* .booking-visual {
+          display: none;
+        } */
+        .booking-body {
+          grid-template-columns: 1fr;
+          padding: 48px 28px;
+        }
+        .footer-grid {
+          flex-direction: column;
+          text-align: center;
+        }
+        .footer-fine {
+          text-align: center;
+        }
+      }
+      @media (max-width: 640px) {
+        .nav-right .btn-book span.btn-label {
+          display: none;
+        }
+        .nav-right .phone {
+          display: none;
+        }
+      }
+      @media (max-width: 560px) {
+        .service-grid {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap nav">
+        <div class="brand">
+          <div class="brand-text">
+            <div class="script">
+              <div class="sub">
+                <img
+                  src="./Images/logo1.png"
+                  alt="logo"
+                  style="width: 75px; height: 75px"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <nav class="links" class="Custom_active">
+          <a href="#top" class="active" data-i18n="nav_home">Home</a>
+          <a href="#about" data-i18n="nav_about">About</a>
+          <a href="#services" data-i18n="nav_services">Services</a>
+          <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+          <a href="#reviews" data-i18n="nav_reviews">Reviews</a>
+          <a href="#book" data-i18n="nav_contact">Contact</a>
+        </nav>
+
+        <div class="nav-right">
+          <div class="lang-toggle">
+            <span class="lang-label active" data-lang-label="en">English</span>
+            <label class="switch">
+              <input
+                type="checkbox"
+                id="langSwitch"
+                aria-label="Switch language between English and Bengali"
+              />
+              <span class="slider"></span>
+            </label>
+            <span class="lang-label" data-lang-label="bn">বাংলা</span>
+          </div>
+
+          <a href="https://wa.me/16473817872?text=Hello%20Eti's%20Sewing%20%26%20Alterations,   %20I%20would%20like%20to%20ask%20about%20your%20services." target="_blank" class="btn-whatsapp" class="btn-book">
+            <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+            </svg>
+            <span class="btn-label" data-i18n="btn_book_header"
+              >WhatsApp</span>
+          </a>
+      
+           <!-- <div class="phone">
+            <div class="num">+1 (647) 381-7872</div>
+            <div data-i18n="phone_label">Call / Text</div>
+          </div> -->
+
+          <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Open menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-top">
+        <button
+          class="mobile-menu-close"
+          id="menuClose"
+          aria-label="Close menu"
+        >
+          &#10005;
+        </button>
+      </div>
+      <nav class="Custom_active">
+        <a href="#top" class="active" data-i18n="nav_home">Home</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#services" data-i18n="nav_services">Services</a>
+        <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+        <a href="#reviews" data-i18n="nav_reviews">Reviews</a>
+        <a href="#book" data-i18n="nav_contact">Contact</a>
+      </nav>
+       <a href="https://wa.me/16473817872?text=Hello%20Eti's%20Sewing%20%26%20Alterations,   %20I%20would%20like%20to%20ask%20about%20your%20services." target="_blank" class="btn-whatsapp" class="btn-book">
+            <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+            </svg>
+            <span class="btn-label" data-i18n="btn_book_header"
+              >WhatsApp</span>
+          </a>
+       
+    </div>
+
+    <main id="top">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="hero_eyebrow">
+            PROFESSIONAL CLOTHING ALTERATIONS & CUSTOM SEWING IN CALGARY
+          </p>
+          <h1 data-i18n-html="hero_h1">Perfect Fit.<br />Beautiful Finish.</h1>
+          <p data-i18n="hero_p">
+            At Eti's Sewing & Alterations, we offer professional alterations, repairs, resizing, and custom sewing. From everyday clothing to special occasion outfits, we ensure every piece fits beautifully and feels just right.
+          </p>
+          <div class="hero-actions">
+
+          <a href="https://wa.me/16473817872?text=Hello%20Eti's%20Sewing%20%26%20Alterations,   %20I%20would%20like%20to%20ask%20about%20your%20services." 
+            target="_blank" class="btn-whatsapp">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" > <rect x="3" y="4" width="18" height="18" rx="2" /> <line x1="16" y1="2" x2="16" y2="6" /> <line x1="8" y1="2" x2="8" y2="6" /> <line x1="3" y1="10" x2="21" y2="10" /> </svg>
+            <span data-i18n="btn_book_hero">Book an Appointment</span>
+          </a>
+            <!-- <a href="#book" class="btn-primary">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+              <span data-i18n="btn_book_hero">Book an Appointment</span>
+            </a>
+            <a href="tel:+1 6473817872" class="btn-outline">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"
+                />
+              </svg>
+              <span data-i18n="btn_call_hero">Call / Text Today</span>
+            </a>
+          </div> -->
+        </div>
+      </section>
+
+      <!-- About -->
+      <!-- <section class="about" id="about">
+    <div class="wrap about-grid">
+     
+      <div class="about-visual">
+        <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="400" fill="#E8DCC8"/>
+        <circle cx="60" cy="440" r="120" fill="#EAD9DD" opacity="0.7"/>
+        <g transform="translate(150,150)">
+          <rect x="0" y="120" width="260" height="130" rx="8" fill="#F5EEE3"/>
+          <circle cx="230" cy="185" r="26" fill="none" stroke="#5C1F2E" stroke-width="4"/>
+          <circle cx="230" cy="185" r="7" fill="#5C1F2E"/>
+          <line x1="0" y1="90" x2="260" y2="90" stroke="#5C1F2E" stroke-width="4"/>
+          <line x1="60" y1="60" x2="60" y2="120" stroke="#B8873A" stroke-width="3"/>
+          <path d="M0 250 Q40 320 20 380" stroke="#5C1F2E" stroke-width="3" fill="none" stroke-dasharray="4 6"/>
+        </g>
+        <g stroke="#B8873A" stroke-width="2" fill="none" opacity="0.6">
+          <path d="M420 380 Q 470 320 430 260 Q 390 200 460 160"/>
+        </g>
+      </svg>
+    </div>
+  </section> -->
+
+      <!-- About -->
+      <section class="about" id="about">
+        <div class="about-title">
+          <h3 class="eyebrow" data-i18n="about_eyebrow">About Us</h3>
+        </div>
+        <div class="wrap about-grid">
+          <!-- Replace with a real photo of a finished garment or fitting -->
+          <div class="about-visual">
+           <img src="./images/about image.png" alt="About Eti's Sewing & Alterations" style="width: 100%; height: 100%; object-fit: cover;" />
+            
+          </div>
+
+          <div class="about-copy">
+            
+            <h2 data-i18n="about_title">Quality Sewing With Personal Care</h2>
+            <p data-i18n="about_p1">
+              Every garment has a story. Our goal is to make your favourite
+              clothes fit comfortably and look their best.
+            </p>
+            <p data-i18n="about_p2">
+              With attention to detail and a passion for sewing, We provide
+              reliable alteration services for women's and men's clothing in
+              Calgary.
+            </p>
+            <div class="check-list">
+              <div>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span data-i18n="check1">Professional workmanship</span>
+              </div>
+              <div>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span data-i18n="check2">Careful measurements</span>
+              </div>
+              <div>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span data-i18n="check3">Clean finishing</span>
+              </div>
+              <div>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span data-i18n="check4">Honest & transparent pricing</span>
+              </div>
+              <div>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span data-i18n="check5">Friendly personal service</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="why-box">
+            <h3 data-i18n="why_title">Why Choose Us?</h3>
+            <div class="why-item">
+              <div class="ic">
+                <svg viewBox="0 0 24 24">
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.7 5.5 21 7.5 13.5 2 9 9 9"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h4 data-i18n="why1_title">Attention to Detail</h4>
+                <p data-i18n="why1_desc">
+                  Every stitch matters. We focus on quality finishing and
+                  professional results.
+                </p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="ic">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h4 data-i18n="why2_title">Perfect Fit</h4>
+                <p data-i18n="why2_desc">
+                  Your measurements and comfort are our priority.
+                </p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="ic">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"
+                  />
+                  <circle cx="12" cy="10" r="2.4" />
+                </svg>
+              </div>
+              <div>
+                <h4 data-i18n="why3_title">Convenient Calgary Service</h4>
+                <p data-i18n="why3_desc">
+                  Local sewing and alteration services with easy appointment
+                  booking.
+                </p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="ic">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" />
+                  <path
+                    d="M12 7v10M9.5 9.5c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.2c0 3-5 1.6-5 4.5 0 1.3 1.1 2.3 2.5 2.3s2.5-1.1 2.5-2.5"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h4 data-i18n="why4_title">Affordable & Reliable</h4>
+                <p data-i18n="why4_desc">
+                  Quality work at a fair price with honest communication.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section class="services wrap" id="services">
+        <div class="section-title">
+          <!-- <div class="rule"><span></span></div> -->
+          <h2 data-i18n="services_title">Our Services</h2>
+          <p data-i18n="services_sub">
+            PROFESSIONAL CARE FOR ALL YOUR CLOTHING NEEDS
+          </p>
+        </div>
+        <div class="service-grid">
+          <div class="service-card">
+            <div class="icon">
+               <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
+                <path d="M6 3L3 6l3 4h2l4 6 4-6h2l3-4-3-3-4 2H10z" />
+              </svg>
+             
+            </div>
+            <h3 data-i18n-html="service1_title">Clothing<br />Alterations</h3>
+            <p data-i18n="service1_desc">Better fit. More comfort.</p>
+          </div>
+          <div class="service-card">
+            <div class="icon">
+              
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
+                <path d="M9 2h6l1 5-3 2 4 13H7L11 9 8 7z" />
+              </svg>
+            </div>
+            <h3 data-i18n-html="service2_title">Dress<br />Alterations</h3>
+            <p data-i18n="service2_desc">For your special occasions.</p>
+          </div>
+          <div class="service-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Waistband -->
+                <path d="M8 4h8v2H8z" />
+                <!-- Main Skirt Body -->
+                <path d="M8 6L5 20h14L16 6" />
+                <!-- Pleat/Fold Details -->
+                <path d="M10 6v14M14 6v14" />
+              </svg>
+              <!-- <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
+                <path d="M8 2h8l1 8-2 12H9L7 10z" />
+                <line x1="8" y1="2" x2="7" y2="10" />
+                <line x1="16" y1="2" x2="17" y2="10" />
+              </svg> -->
+            </div>
+            <h3 data-i18n-html="service3_title">
+              <!-- Pants &amp; Jeans<br />Hemming -->
+               Skirt &amp; Waist Alterations 
+            </h3>
+            <p data-i18n="service3_desc">
+              Beautifully adjusted.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
+                <path d="M12 2v20M8 4h8M8 20h8M9 8h6M9 12h6M9 16h6" />
+              </svg>
+            </div>
+            <h3 data-i18n-html="service4_title">
+              Repairs &amp; Zipper<br />Replacement
+            </h3>
+            <p data-i18n="service4_desc">Fixes that last.</p>
+          </div>
+          <div class="service-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
+                <path d="M8 2l4 3 4-3 2 5-3 3v11H9V10L6 7z" />
+              </svg>
+            </div>
+            <h3 data-i18n-html="service5_title">
+              Blouse &amp; Saree<br />Alterations
+            </h3>
+            <p data-i18n="service5_desc">Sleeve adjustments and resizing.</p>
+          </div>
+          <div class="service-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
+                <rect x="3" y="10" width="13" height="8" rx="1" />
+                <circle cx="17" cy="8" r="2" />
+                <path d="M6 10V7a2 2 0 0 1 2-2h3" />
+              </svg>
+            </div>
+            <h3 data-i18n="service6_title">Custom Sewing</h3>
+            <p data-i18n="service6_desc">Unique pieces made for you.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="strip">
+        <div class="strip-inner" data-i18n-html="marquee">
+          Bangladeshi Three-Piece Making <span>&#10022;</span>
+          Blouse Sewing & Alterations <span>&#10022;</span>
+          Common Alterations <span>&#10022;</span>
+          Dress Alterations <span>&#10022;</span>
+          Salwar Kameez Alterations <span>&#10022;</span>
+          Kameez & Kurti Alterations <span>&#10022;</span>
+          Zipper Repair <span>&#10022;</span>
+          Custom Fit <span>&#10022;</span>
+          Wedding gowns<span>&#10022;</span>          
+        </div>
+      </div>
+
+      <!-- Gallery -->
+      <section class="gallery wrap" id="gallery">
+        <div class="gallery-head">
+          <div class="section-title">
+            <!-- <p class="eyebrow" data-i18n="gallery_eyebrow">
+              BEFORE &amp; AFTER GALLERY
+            </p> -->
+            <h2 data-i18n="gallery_title">Our Work</h2>
+         
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <div class="frame">
+              <img src="./images/gallary1.png" alt="Custom Blouse Sewing" style="width: 100%; height: 100%; object-fit: cover;" />
+              
+            </div>
+            <span data-i18n="gallery1">Custom Blouse Sewing</span>
+          </div>
+          <div class="gallery-item">
+            <div class="frame">
+              <img src="./images/gallary2.jpg" alt="New Blouse Making" style="width: 100%; height: 100%; object-fit: cover;" />
+             
+            </div>
+            <span data-i18n="gallery2">New Blouse Making</span>
+          </div>
+          <div class="gallery-item">
+            <div class="frame">
+               <img src="./images/gallary3.jpg" alt="Blouse Alterations" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <span data-i18n="gallery3">Blouse Alterations</span>
+          </div>
+          <div class="gallery-item">
+            <div class="frame">
+              <img src="./images/gallary4.jpg" alt="Blouse Alterations" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <span data-i18n="gallery4">Blouse Alterations</span>
+          </div>
+          <div class="gallery-item">
+            <div class="frame">
+              <img src="./images/gallary5.png" alt="Saree Falls & Pico" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <span data-i18n="gallery5">Saree Falls & Pico</span>
+          </div>
+          <div class="gallery-item">
+            <div class="frame">
+              <img src="./images/gallary6.png" alt="Custom Designs" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <span data-i18n="gallery6">Jeans Alterations</span>
+          </div>
+           <div class="gallery-item">
+            <div class="frame">
+              <img src="./images/gallary7.png" alt="Kurta Making" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <span data-i18n="gallery7">Kurta Making</span>
+          </div>
+           <div class="gallery-item">
+            <div class="frame">
+              <img src="./images/gallary10.png" alt="Nighty Making" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <span data-i18n="gallery10">Nighty Making</span>
+          </div>
+           <div class="gallery-item">
+            <div class="frame">
+              <img src="./images/gallary9.png" alt="Gopal Dress Making" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <span data-i18n="gallery9">Gopal Dress Making</span>
+          </div>
+          
+           <div class="gallery-item">
+            <div class="frame">
+              <img src="./images/gallary12.png" alt="Baby Dress Making" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <span data-i18n="gallery12">Baby dress Making</span>
+          </div>
+          <div class="gallery-item">
+            <div class="frame">
+              <img src="./images/gallary8.png" alt="Bed sheet Customized" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <span data-i18n="gallery8">Bed sheets Customized</span>
+          </div>
+           <div class="gallery-item">
+            <div class="frame">
+              <img src="./images/gallary11.png" alt="Gopal Dress Making" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <span data-i18n="gallery11">Plazo Making</span>
+          </div>
+        </div>
+        <!-- <div class="gallery-more">
+          <a href="#" class="more" data-i18n="gallery_more"
+            >View More Photos →</a
+          >
+        </div> -->
+      </section>
+
+      <!-- Testimonials -->
+      <section class="testimonials" id="reviews">
+        <div class="wrap">
+          <div class="section-title">
+            <!-- <div class="rule"><span></span></div> -->
+            <h2 data-i18n="testimonials_title">What Our Clients Say</h2>
+          </div>
+          <div class="t-grid">
+            <div class="t-card">
+              <div class="stars">
+                <svg viewBox="0 0 24 24">
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.7 5.5 21 7.5 13.5 2 9 9 9"
+                  />
+                </svg>
+                <svg viewBox="0 0 24 24">
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.7 5.5 21 7.5 13.5 2 9 9 9"
+                  />
+                </svg>
+                <svg viewBox="0 0 24 24">
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.7 5.5 21 7.5 13.5 2 9 9 9"
+                  />
+                </svg>
+                <svg viewBox="0 0 24 24">
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.7 5.5 21 7.5 13.5 2 9 9 9"
+                  />
+                </svg>
+                <svg viewBox="0 0 24 24">
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.7 5.5 21 7.5 13.5 2 9 9 9"
+                  />
+                </svg>
+              </div>
+              <p data-i18n="quote1">
+                "Beautiful work and excellent attention to detail. My dress fits
+                perfectly and looks amazing."
+              </p>
+              <div class="who" data-i18n="quote4">Jayshree Sen</div>
+            </div>
+            <div class="t-card">
+              <div class="stars">
+                <svg viewBox="0 0 24 24">
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.7 5.5 21 7.5 13.5 2 9 9 9"
+                  />
+                </svg>
+                <svg viewBox="0 0 24 24">
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.7 5.5 21 7.5 13.5 2 9 9 9"
+                  />
+                </svg>
+                <svg viewBox="0 0 24 24">
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.7 5.5 21 7.5 13.5 2 9 9 9"
+                  />
+                </svg>
+                <svg viewBox="0 0 24 24">
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.7 5.5 21 7.5 13.5 2 9 9 9"
+                  />
+                </svg>
+                <svg viewBox="0 0 24 24">
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.7 5.5 21 7.5 13.5 2 9 9 9"
+                  />
+                </svg>
+              </div>
+              <p data-i18n="quote2">
+                "Professional, friendly and very careful with details. Highly
+                recommend Eti's Sewing & Alterations."
+              </p>
+              <div class="who" data-i18n="quote5">Rumi Datta</div>
+            </div>
+            <div class="t-card">
+              <div class="stars">
+                <svg viewBox="0 0 24 24">
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.7 5.5 21 7.5 13.5 2 9 9 9"
+                  />
+                </svg>
+                <svg viewBox="0 0 24 24">
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.7 5.5 21 7.5 13.5 2 9 9 9"
+                  />
+                </svg>
+                <svg viewBox="0 0 24 24">
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.7 5.5 21 7.5 13.5 2 9 9 9"
+                  />
+                </svg>
+                <svg viewBox="0 0 24 24">
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.7 5.5 21 7.5 13.5 2 9 9 9"
+                  />
+                </svg>
+                <svg viewBox="0 0 24 24">
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.7 5.5 21 7.5 13.5 2 9 9 9"
+                  />
+                </svg>
+              </div>
+              <p data-i18n="quote3">
+                "I've used Eti's for several alterations, and every time the fit is perfect. Great service and fast turnaround."
+              </p>
+              <div class="who" data-i18n="quote6">Mahafuja Akter</div>
+            </div>
+          </div>
+        </div>
+     
+      </section>
+
+      <!-- Booking -->
+      <section class="booking" id="book">
+        <!-- Replace with a real flat-lay photo of sewing tools -->
+        <div class="booking-visual">
+         <img src="./images/contact image.png" alt="Contact image" style="width: 100%; height: 100%; object-fit: cover;" />
+        </div>
+        <section class="booking-body">
+          <div class="contact-info">
+            <p data-i18n="booking_sub">
+              Need alterations or custom sewing in Calgary?
+            </p>
+            <h2 data-i18n="booking_title">Contact Us Today</h2>
+            
+            <div class="b-contact">
+              <div>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                  <path
+                    d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"
+                  />
+                  <circle cx="12" cy="10" r="2.4" />
+                </svg>
+                <span data-i18n="booking_address"
+                  >Eti's Sewing & Alterations, Royal Oak, Calgary, Alberta</span
+                >
+              </div>
+              <div>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"
+                  />
+                </svg>
+                <span data-i18n="booking_phone_number">+1 (647)-381-7872</span>
+                <span data-i18n="booking_phone_suffix">(Call / Text)</span>
+              </div>
+              <div>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                  <path d="M4 4h16v16H4z" />
+                  <path d="M4 6l8 7 8-7" />
+                </svg>
+                <span data-i18n="booking_email">sewingbyeti@gmail.com</span>
+              </div>
+            </div>
+          </div>
+         
+              <div class="contact-icon">
+                 <h2 data-i18n="follow_us">Follow Us</h2>
+                <ul>
+                  <li><a href="https://www.facebook.com/people/Etis-Sewing-Alterations/61594216021470/" target="_blank"><i class="fa-brands fa-facebook-f fb-color"></i></a></li>
+                  <li><a href="https://www.instagram.com/mandaletirani" target="_blank"><i class="fa-brands fa-instagram ins-color"></i></a></li>
+                  <li><a href="https://www.youtube.com/@EtisSewingAlterations" target="_blank"><i class="fa-brands fa-youtube yt-color"></i></a></li>
+                </ul>
+              </div>
+            </div>
+        </section>
+
+          <!-- <form class="booking-form" id="bookingForm">
+            <div>
+              <label data-i18n="form_name_label">Name *</label>
+              <input
+                type="text"
+                data-i18n-placeholder="ph_name"
+                placeholder="Your full name"
+                required
+              />
+            </div>
+            <div>
+              <label data-i18n="form_phone_label">Phone *</label>
+              <input
+                type="tel"
+                data-i18n-placeholder="ph_phone"
+                placeholder="Your phone number"
+                required
+              />
+            </div>
+            <div>
+              <label data-i18n="form_alteration_label"
+                >What needs alteration? *</label
+              >
+              <input
+                type="text"
+                data-i18n-placeholder="ph_alteration"
+                placeholder="e.g. Hemming a dress"
+                required
+              />
+            </div>
+            <div>
+              <label data-i18n="form_date_label">Preferred date *</label>
+              <input type="date" required />
+            </div>
+            <div class="full">
+              <label data-i18n="form_upload_label"
+                >Upload a photo of garment (optional)</label
+              >
+              <input type="file" accept="image/*" />
+            </div>
+            <div class="full">
+              <label data-i18n="form_message_label">Message</label>
+              <textarea
+                rows="2"
+                data-i18n-placeholder="ph_message"
+                placeholder="Anything else we should know"
+              ></textarea>
+            </div>
+            <button type="submit" data-i18n="btn_send">Send Request</button>
+          </form> -->
+        </div>
+      </section>
+    </main>
+    <!-- <section class="map">
+        <iframe
+          src="https://www.google.com/maps?q=Calgary,+AB,+Canada&output=embed"
+          width="100%"
+          height="250"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+          </section> -->
+    <footer>
+      <div class="wrap footer-grid">
+        <div class="footer-brand">
+          <div class="script">
+            <img
+              src="./Images/logo1.png"
+              alt="logo"
+              style="width: 75px; height: 75px"
+            />
+          </div>
+        </div>
+        <!-- <div class="footer-links">
+          <a href="#top" data-i18n="nav_home">Home</a>
+          <a href="#about" data-i18n="nav_about">About</a>
+          <a href="#services" data-i18n="nav_services">Services</a>
+          <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+          <a href="#reviews" data-i18n="nav_reviews">Reviews</a>
+          <a href="#book" data-i18n="nav_contact">Contact</a>
+        </div> -->
+        <!-- <div class="footer-social">
+          <a href="#" aria-label="Facebook"
+            ><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+              <path
+                d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+              /></svg
+          ></a>
+          <a href="#" aria-label="Instagram"
+            ><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+              <rect x="3" y="3" width="18" height="18" rx="4" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" /></svg
+          ></a>
+          <a href="#" aria-label="Google"
+            ><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M8 12h8M12 8v8" /></svg
+          ></a>
+        </div> -->
+        <div class="footer-fine">
+          <span data-i18n="footer_fine1"
+            >&copy;&#169; 2026 Eti's Sewing & Alterations. All Rights Reserved.</span
+          > &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; 
+          <span data-i18n="footer_fine2"
+            >Professional Alterations • Repairs • Custom Sewing — Calgary,
+            Alberta</span
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script>
+
+       
+      (function () {
+        /* ---------- Mobile hamburger menu ---------- */
+        var hamburger = document.getElementById("hamburger");
+        var mobileMenu = document.getElementById("mobileMenu");
+        var overlay = document.getElementById("menuOverlay");
+        var closeBtn = document.getElementById("menuClose");
+
+        function openMenu() {
+          mobileMenu.classList.add("open");
+          overlay.classList.add("open");
+          hamburger.classList.add("open");
+          hamburger.setAttribute("aria-expanded", "true");
+          document.body.style.overflow = "hidden";
+        }
+        function closeMenu() {
+          mobileMenu.classList.remove("open");
+          overlay.classList.remove("open");
+          hamburger.classList.remove("open");
+          hamburger.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        }
+        hamburger.addEventListener("click", function () {
+          mobileMenu.classList.contains("open") ? closeMenu() : openMenu();
+        });
+        closeBtn.addEventListener("click", closeMenu);
+        overlay.addEventListener("click", closeMenu);
+        mobileMenu.querySelectorAll("a").forEach(function (a) {
+          a.addEventListener("click", closeMenu);
+        });
+        window.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") closeMenu();
+        });
+
+
+          /* ---------- Menubar active link ---------- */
+           const menuLinks = document.querySelectorAll(".links a");
+
+                 menuLinks.forEach(link => {
+                 link.addEventListener("click", function () {
+                 menuLinks.forEach(item => item.classList.remove("active"));
+                 this.classList.add("active");
+                 });
+                 });
+
+                            const menuLinks2 = document.querySelectorAll(".Custom_active a");
+
+                 menuLinks2.forEach(link => {
+                 link.addEventListener("click", function () {
+                 menuLinks2.forEach(item => item.classList.remove("active"));
+                 this.classList.add("active");
+                 });
+                 });
+ /* ---------- Menubar active link ---------- */
+
+        /* ---------- Booking form (demo only — wire to a backend or form service) ---------- */
+       const bookingForm = document.getElementById("bookingForm");
+
+if (bookingForm) {
+  bookingForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    this.reset();
+
+    const msg =
+      currentLang === "bn"
+        ? "ধন্যবাদ — আমরা শীঘ্রই আপনার অ্যাপয়েন্টমেন্ট নিশ্চিত করব।"
+        : "Thanks — we'll confirm your appointment shortly.";
+
+    alert(msg);
+  });
+}
+
+        /* ---------- EN / BN language toggle ---------- */
+        var translations = {
+          nav_home: { en: "Home", bn: "হোম" },
+          nav_services: { en: "Services", bn: "সেবাসমূহ" },
+          nav_gallery: { en: "Gallery", bn: "গ্যালারি" },
+          nav_reviews: { en: "Reviews", bn: "রিভিউ" },
+          nav_about: { en: "About", bn: "আমাদের সম্পর্কে" },
+          nav_contact: { en: "Contact", bn: "যোগাযোগ" },
+          btn_book_header: {
+            en: "Whatsapp",
+            bn: "হোয়াটসঅ্যাপ",
+          },
+         
+
+          hero_eyebrow: {
+            en: "PROFESSIONAL CLOTHING ALTERATIONS & CUSTOM SEWING IN CALGARY",
+            bn: "ক্যালগেরিতে পেশাদার পোশাক অল্টারেশন ও কাস্টম সেলাই",
+          },
+          hero_h1: {
+            en: "Perfect Fit.<br>Beautiful Finish.",
+            bn: "নিখুঁত ফিট।<br>সুন্দর ফিনিশ।",
+          },
+          hero_p: {
+            en: "At Eti's Sewing & Alterations, we offer professional alterations, repairs, resizing, and custom sewing. From everyday clothing to special occasion outfits, we ensure every piece fits beautifully and feels just right.",
+            bn: "ইতি'স সেলাই ও অল্টারেশনস-এ আমরা পেশাদার অল্টারেশন, মেরামত, রিসাইজিং এবং কাস্টম সেলাইয়ের পরিষেবা দিয়ে থাকি। দৈনন্দিন পোশাক থেকে শুরু করে বিশেষ অনুষ্ঠানের পোশাক পর্যন্ত, আমরা নিশ্চিত করি যেন প্রতিটি পোশাক সুন্দরভাবে ফিট হয় এবং পরিধান করতে আরামদায়ক হয়।",
+          },
+          btn_book_hero: {
+            en: "Book Your Appointment",
+            bn: "আপনার অ্যাপয়েন্টমেন্ট বুক করুন",
+          },
+          btn_call_hero: {
+            en: "Call / Text Today",
+            bn: "আজই কল বা টেক্সট করুন",
+          },
+
+          services_title: { en: "Our Services", bn: "আমাদের সেবাসমূহ" },
+          services_sub: {
+            en: "PROFESSIONAL CARE FOR ALL YOUR CLOTHING NEEDS",
+            bn: "আপনার পোশাক সংক্রান্ত সকল প্রয়োজনের জন্য পেশাদারী সেবা",
+          },
+
+          service1_title: {
+            en: "Clothing<br>Alterations",
+            bn: "পোশাক<br>অল্টারেশন",
+          },
+          service1_desc: {
+            en: "Better fit. More comfort.",
+            bn: "ভালো ফিট। বেশি আরাম।",
+          },
+          service2_title: {
+            en: "Dress<br>Alterations",
+            bn: "ড্রেস<br>অল্টারেশন",
+          },
+          service2_desc: {
+            en: "For your special occasions.",
+            bn: "আপনার বিশেষ অনুষ্ঠানের জন্য।",
+          },
+          service3_title: {
+            en: "Skirt &amp; <br>Waist Alterations",
+            bn: "স্কার্ট এবং <br>কোমরের অল্টারেশন",
+          },
+          service3_desc: {
+            en: "Beautifully adjusted.",
+            bn: "ছোট করা, রিসাইজিং ও সমন্বয়।",
+          },
+          service4_title: {
+            en: "Repairs &amp; Zipper<br>Replacement",
+            bn: "মেরামত ও জিপার<br>প্রতিস্থাপন",
+          },
+          service4_desc: { en: "Fixes that last.", bn: "টেকসই মেরামত।" },
+          service5_title: {
+            en: "Blouse &amp; Saree<br>Alterations",
+            bn: "ব্লাউজ ও শাড়ি<br>অল্টারেশন",
+          },
+          service5_desc: {
+            en: "Sleeve adjustments and resizing.",
+            bn: "হাতা সমন্বয় ও রিসাইজিং।",
+          },
+          service6_title: { en: "Custom Sewing", bn: "কাস্টম সেলাই" },
+          service6_desc: {
+            en: "Unique pieces made for you.",
+            bn: "আপনার জন্য তৈরি অনন্য পোশাক।",
+          },
+
+          marquee: {
+            en: "Bangladeshi Three-Piece Making <span>&#10022;</span> Blouse Sewing & Alterations <span>&#10022;</span> Common Alterations <span>&#10022;</span> Dress Alterations <span>&#10022;</span> Salwar Kameez Alterations <span>&#10022;</span> Kameez & Kurti Alterations <span>&#10022;</span> Zipper Repair <span>&#10022;</span> Custom Fit <span>&#10022;</span> Wedding gowns<span>&#10022;</span>",
+            bn: "বাংলাদেশী থ্রি-পিস তৈরি <span>&#10022;</span> ব্লাউজ সেলাই ও অল্টারেশন <span>&#10022;</span> সাধারণ অল্টারেশন <span>&#10022;</span> পোশাক অল্টারেশন <span>&#10022;</span> সালোয়ার কামিজ অল্টারেশন <span>&#10022;</span> কামিজ এবং কুর্তি অল্টারেশন <span>&#10022;</span> জিপার মেরামত <span>&#10022;</span> কাস্টম ফিট  <span>&#10022;</span> বিয়ের গাউন <span>&#10022;</span>",
+          },
+
+          about_eyebrow: { en: "About Us", bn: "আমাদের সম্পর্কে" },
+          about_title: {
+            en: "Quality Sewing With Personal Care",
+            bn: "ব্যক্তিগত যত্নসহ মানসম্পন্ন সেলাই",
+          },
+          about_p1: {
+            en: "Every garment has a story. Our goal is to make your favourite clothes fit comfortably and look their best.",
+            bn: "প্রতিটি পোশাকেরই একটি গল্প আছে। আমাদের লক্ষ্য হলো আপনার প্রিয় পোশাকগুলোকে আরামদায়ক করে তোলা এবং সেগুলোকে সেরা রূপে উপস্থাপন করা।",
+          },
+          about_p2: {
+            en: "With attention to detail and a passion for sewing, we provide reliable alteration services for women's and men's clothing in Calgary.",
+            bn: "খুঁটিনাটি বিষয়ে মনোযোগ ও সেলাইয়ের প্রতি ভালোবাসা নিয়ে, আমরা ক্যালগেরিতে নারী ও পুরুষদের পোশাকের জন্য নির্ভরযোগ্য অল্টারেশন সেবা প্রদান করি।",
+          },
+          check1: { en: "Professional workmanship", bn: "পেশাদার কারিগরি" },
+          check2: { en: "Careful measurements", bn: "সতর্ক পরিমাপ" },
+          check3: { en: "Clean finishing", bn: "পরিচ্ছন্ন ফিনিশিং" },
+          check4: {en: "Honest & transparent pricing", bn: "সৎ ও স্বচ্ছ মূল্য নির্ধারণ" },
+          check5: {en: "Friendly personal service",bn: "বন্ধুত্বপূর্ণ ব্যক্তিগত সেবা",
+          },
+
+          why_title: { en: "Why Choose Us?", bn: "কেন আমাদের বেছে নেবেন?" },
+          why1_title: { en: "Attention to Detail", bn: "খুঁটিনাটিতে মনোযোগ" },
+          why1_desc: {
+            en: "Every stitch matters. We focus on quality finishing and professional results.",
+            bn: "প্রতিটি সেলাই গুরুত্বপূর্ণ। আমরা মানসম্পন্ন ফিনিশিং ও পেশাদার ফলাফলে গুরুত্ব দিই।",
+          },
+          why2_title: { en: "Perfect Fit", bn: "নিখুঁত ফিট" },
+          why2_desc: {
+            en: "Your measurements and comfort are our priority.",
+            bn: "আপনার পরিমাপ ও স্বাচ্ছন্দ্যই আমাদের অগ্রাধিকার।",
+          },
+          why3_title: {
+            en: "Convenient Calgary Service",
+            bn: "সুবিধাজনক ক্যালগেরি সেবা",
+          },
+          why3_desc: {
+            en: "Local sewing and alteration services with easy appointment booking.",
+            bn: "সহজে অ্যাপয়েন্টমেন্ট বুকিংসহ স্থানীয় সেলাই ও অল্টারেশন সেবা।",
+            
+          },
+          why4_title: {
+            en: "Affordable & Reliable",
+            bn: "সাশ্রয়ী ও নির্ভরযোগ্য",
+          },
+          why4_desc: {
+            en: "Quality work at a fair price with honest communication.",
+            bn: "ন্যায্য মূল্যে মানসম্মত কাজ এবং বিশ্বস্ত।",
+          },
+
+         
+          gallery_title: { en: "Our Work", bn: "আমাদের কাজ" },
+          // gallery_more: { en: "View More Photos →", bn: "আরও ছবি দেখুন →" },
+          gallery1: { en: "Custom Blouse Sewing",bn: "কাস্টম ব্লাউজ সেলাই", },
+          gallery2: { en: "New Blouse Making", bn: "নতুন ব্লাউজ তৈরি", },
+          gallery3: { en: "Blouse Alterations", bn: "ব্লাউজ অল্টারেশন", },
+          gallery4: { en: "Blouse Resizing & Fitting", bn: "ব্লাউজের মাপ পরিবর্তন ও ফিটিং", },
+          gallery5: { en: "Saree Falls & Pico", bn: "সারি ফলস ও পিকো" },
+          gallery6: { en: "Jeans Alterations", bn: "জিনস অল্টারেশন" },
+          gallery7: { en: "Kurta Making", bn: "কুর্তা তৈরি" },
+          gallery8: { en: "Bed sheets Customized", bn: "বেড শিট কাস্টমাইজড" },
+          gallery9: { en: "Gopal Dress Making", bn: "গোপাল ড্রেস তৈরি" },
+          gallery10: { en: "Nighty Making", bn: "নাইটি তৈরি" },
+          gallery11: { en: "Plazo Making", bn: "প্লাজু তৈরি" },
+          gallery12: { en: "Baby Dress Making", bn: "বেবি ড্রেস তৈরি" },
+
+          testimonials_title: {
+            en: "What Our Clients Say",
+            bn: "আমাদের ক্লায়েন্টরা যা বলেন",
+          },
+          quote1: {
+            en: '"Beautiful work and excellent attention to detail. My dress fits perfectly and looks amazing."',
+            bn: '"সুন্দর কাজ এবং খুঁটিনাটি বিষয়ের প্রতি দারুণ মনোযোগ। আমার পোশাকটি একদম নিখুঁতভাবে মানিয়ে গেছে এবং দেখতেও দারুণ লাগছে।"',
+          },
+          quote2: {
+            en: '"Professional, friendly, and very careful with details. Highly recommend Eti\'s Sewing & Alterations."',
+            bn: '"পেশাদার, বন্ধুত্বপূর্ণ এবং খুঁটিনাটি বিষয়ের প্রতি অত্যন্ত যত্নশীল। ইতি স সেলাই ও অল্টারেশন-কে আমি জোরালোভাবে সুপারিশ করছি।"',
+          },
+          quote3: {
+            en: "\"I've used Eti's for several alterations, and every time the fit is perfect. Great service and fast turnaround.\"",
+            bn: '"আমি বেশ কয়েকবার পোশাকের মাপ ঠিক করার জন্য ইতি স সেলাই ও অল্টারেশন-এর সেবা নিয়েছি এবং প্রতিবারই ফিটিং একদম নিখুঁত হয়েছে। দারুণ সেবা এবং দ্রুত কাজ সম্পন্ন করার বিষয়টি সত্যিই প্রশংসনীয়।"',
+          },
+          quote4: {
+            en: "\"Jayshree Sen\"",
+            bn: '""জয়শ্রী সেন""',
+          },
+           quote5: {
+            en: "\"Rumi Datta\"",
+            bn: '"রুমি দত্ত"',
+          },
+           quote6: {
+            en: "\"Mahafuja Akter\"",
+            bn: '"মাহফুজা আক্তার"',
+          },
+
+          booking_title: {
+            en: "Contact Us Today",
+            bn: "আজই আমাদের সাথে যোগাযোগ করুন",
+          },
+          booking_sub: {
+            en: "Need alterations or custom sewing in Calgary?",
+            bn: "ক্যালগেরিতে অল্টারেশন বা কাস্টম সেলাই দরকার?",
+          },
+          booking_address: {
+            en: "Eti's Sewing & Alterations, Royal Oak, Calgary, Alberta",
+            bn: "ইতি'স সেলাই ও অল্টারেশন, রয়্যাল ওক, ক্যালগারি, আলবার্টা",
+          },
+          booking_phone_suffix: { en: "(Call / Text)", bn: "(কল / টেক্সট)" },
+          booking_phone_number: { en: "+1 (647)-381-7872", bn: "+১ (৬৪৭)-৩৮১-৭৮৭২" },
+          booking_email: { en: "sewingbyeti@gmail.com", bn: "sewingbyeti@gmail.com" },
+          follow_us: { en: "Follow Us", bn: "আমাদের অনুসরণ করুন" },
+
+          form_name_label: { en: "Name *", bn: "নাম *" },
+          form_phone_label: { en: "Phone *", bn: "ফোন *" },
+          form_alteration_label: {
+            en: "What needs alteration? *",
+            bn: "কী অল্টার করতে হবে? *",
+          },
+          form_date_label: { en: "Preferred date *", bn: "পছন্দের তারিখ *" },
+          form_upload_label: {
+            en: "Upload a photo of garment (optional)",
+            bn: "পোশাকের ছবি আপলোড করুন (ঐচ্ছিক)",
+          },
+          form_message_label: { en: "Message", bn: "বার্তা" },
+          btn_send: { en: "Send Request", bn: "অনুরোধ পাঠান" },
+
+          ph_name: { en: "Your full name", bn: "আপনার পূর্ণ নাম" },
+          ph_phone: { en: "Your phone number", bn: "আপনার ফোন নম্বর" },
+          ph_alteration: {
+            en: "e.g. Hemming a dress",
+            bn: "যেমন: একটি ড্রেস হেমিং করা",
+          },
+          ph_message: {
+            en: "Anything else we should know",
+            bn: "আর কিছু জানানোর থাকলে লিখুন",
+          },
+
+          footer_fine1: {
+            en: "© 2026 Eti's Sewing & Alterations. All Rights Reserved.",
+            bn: "© ২০২৬ ইতি'স সেলাই ও অল্টারেশন। সর্বস্বত্ব সংরক্ষিত।",
+          },
+          footer_fine2: {
+            en: "Professional Alterations • Repairs • Custom Sewing — Calgary, Alberta",
+            bn: "পেশাদার অল্টারেশন • মেরামত • কাস্টম সেলাই — ক্যালগেরি, আলবার্টা",
+          },
+        };
+
+        var currentLang = "en";
+        var langSwitch = document.getElementById("langSwitch");
+        var langLabels = document.querySelectorAll(".lang-label");
+
+        function applyLanguage(lang) {
+          currentLang = lang;
+          document.body.classList.toggle("lang-bn", lang === "bn");
+          document.documentElement.setAttribute("lang", lang);
+
+          document.querySelectorAll("[data-i18n]").forEach(function (el) {
+            var key = el.getAttribute("data-i18n");
+            if (translations[key]) el.textContent = translations[key][lang];
+          });
+          document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+            var key = el.getAttribute("data-i18n-html");
+            if (translations[key]) el.innerHTML = translations[key][lang];
+          });
+          document
+            .querySelectorAll("[data-i18n-placeholder]")
+            .forEach(function (el) {
+              var key = el.getAttribute("data-i18n-placeholder");
+              if (translations[key])
+                el.setAttribute("placeholder", translations[key][lang]);
+            });
+          langLabels.forEach(function (el) {
+            el.classList.toggle(
+              "active",
+              el.getAttribute("data-lang-label") === lang,
+            );
+          });
+        }
+
+        langSwitch.addEventListener("change", function () {
+          applyLanguage(this.checked ? "bn" : "en");
+        });
+        document.querySelectorAll("[data-lang-label]").forEach(function (el) {
+          el.addEventListener("click", function () {
+            var lang = el.getAttribute("data-lang-label");
+            langSwitch.checked = lang === "bn";
+            applyLanguage(lang);
+          });
+        });
+
+        applyLanguage("en");
+      })();
+    </script>
+  </body>
+</html>
